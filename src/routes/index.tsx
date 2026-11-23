@@ -1,23 +1,26 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { SmsInsightApp } from "@/components/sms/App";
 
-// The home route ships no og:image, so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
+  head: () => ({
+    meta: [
+      { title: "SMS Insight — Bank & telecom SMS at a glance" },
+      { name: "description", content: "Turn CBE, Telebirr and Ethio Telecom SMS into clear summaries of money and packages." },
+      { property: "og:title", content: "SMS Insight — Bank & telecom SMS at a glance" },
+      { property: "og:description", content: "Turn CBE, Telebirr and Ethio Telecom SMS into clear summaries of money and packages." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
+    ],
+  }),
   component: Index,
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <main className="flex min-h-screen items-center justify-center bg-secondary p-0 sm:p-8">
+      <div className="h-screen w-full overflow-hidden bg-background sm:h-[860px] sm:w-[400px] sm:rounded-[44px] sm:border-[10px] sm:border-ink sm:shadow-phone">
+        <SmsInsightApp />
+      </div>
+    </main>
   );
 }
